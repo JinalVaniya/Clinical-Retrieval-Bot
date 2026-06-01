@@ -1,4 +1,4 @@
-# 🏥 Clinical Retrieval Assistant
+# Clinical Retrieval Assistant
 
 A Retrieval-Augmented Generation (RAG) based healthcare chatbot that enables users to query medical PDF documents using natural language.
 
