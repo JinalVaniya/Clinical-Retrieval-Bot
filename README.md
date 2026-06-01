@@ -6,7 +6,7 @@ The system retrieves relevant information from indexed medical documents and gen
 
 ---
 
-## 🚀 Features
+## Features
 
 * Medical PDF document ingestion
 * Semantic search using embeddings
@@ -19,7 +19,7 @@ The system retrieves relevant information from indexed medical documents and gen
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```text
 Medical PDFs
@@ -48,7 +48,7 @@ Generated Response + Sources
 
 ---
 
-## ⚙️ Tech Stack
+## Tech Stack
 
 * Python
 * LangChain
@@ -62,7 +62,7 @@ Generated Response + Sources
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 project/
@@ -81,7 +81,7 @@ project/
 
 ---
 
-## 🔧 Environment Variables
+## Environment Variables
 
 Create a `.env` file:
 
@@ -98,11 +98,9 @@ https://console.groq.com/keys
 Hugging Face:
 https://huggingface.co/settings/tokens
 
-> **Note:** `HF_TOKEN` is optional for this project because the embedding model used is publicly available.
-
 ---
 
-## 📚 Build Vector Database
+## Build Vector Database
 
 Place medical PDF documents inside the `Data/` folder.
 
@@ -121,7 +119,7 @@ This will:
 
 ---
 
-## 💬 Run Chatbot
+## Run Chatbot
 
 ### Command Line Version
 
@@ -137,7 +135,7 @@ streamlit run app.py
 
 ---
 
-## 🔍 Example Query
+## Example Query
 
 ```text
 What are the treatment options for cancer?
@@ -152,7 +150,7 @@ The system:
 
 ---
 
-## 📈 Future Improvements
+## Future Improvements
 
 * Hybrid Search (BM25 + Vector Search)
 * Clinical Guideline Integration
