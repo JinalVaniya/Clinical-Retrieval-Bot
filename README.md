@@ -76,6 +76,7 @@ project/
 ├── app.py
 ├── pyproject.toml
 ├── .env.example
+├── requirement.txt
 └── README.md
 ```
 
