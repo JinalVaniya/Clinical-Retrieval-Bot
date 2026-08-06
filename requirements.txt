@@ -1,0 +1,10 @@
+streamlit
+python-dotenv
+langchain
+langchain-community
+langchain-classic
+langchain-groq
+sentence-transformers==5.0.0
+faiss-cpu
+pymupdf
+langchain-huggingface

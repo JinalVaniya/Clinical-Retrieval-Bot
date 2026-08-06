@@ -6,12 +6,56 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_classic.chains import RetrievalQA
 from langchain_groq import ChatGroq
+from pathlib import Path
 
 from LLM_connection import get_prompt   
 
 load_dotenv()
 
-DB_FAISS_PATH = "vectorstore/db_faiss"
+try:
+    groq_api_key = st.secrets["GROQ_API_KEY"]
+except Exception:
+    groq_api_key = os.getenv("GROQ_API_KEY")
+
+if not groq_api_key:
+    st.error("GROQ_API_KEY is missing.")
+
+llm = ChatGroq(
+    model_name="llama-3.1-8b-instant",
+    api_key=groq_api_key,
+    temperature=0.6,
+    max_tokens=512,
+)
+
+
+embedding_model = HuggingFaceEmbeddings(model_name = "sentence-transformers/all-MiniLM-L6-v2",
+                                        cache_folder=".\hf_cache")
+
+DB_FAISS_PATH = Path("VectorStore/db_faiss")
+
+if not DB_FAISS_PATH.exists():
+    st.error(f"Missing FAISS folder: {DB_FAISS_PATH}")
+    st.stop()
+
+try:
+    db = FAISS.load_local(
+        str(DB_FAISS_PATH),
+        embedding_model,
+        allow_dangerous_deserialization=True,
+    )
+except Exception as e:
+    st.error(f"Could not load FAISS index: {e}")
+    st.stop()
+    
+prompt = get_prompt()
+
+# db = FAISS.load_local(DB_FAISS_PATH, embedding_model, allow_dangerous_deserialization = True)
+
+rag_chain = RetrievalQA.from_chain_type(llm=llm,
+                                        chain_type = "stuff",
+                                        retriever=db.as_retriever(search_kwargs={'k': 3}),
+                                        return_source_documents=True,
+                                        chain_type_kwargs = {'prompt': prompt})
 
 
 @st.cache_resource
