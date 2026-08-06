@@ -74,7 +74,6 @@ project/
 ├── extract_vector_data.py
 ├── LLM_connection.py
 ├── app.py
-├── pyproject.toml
 ├── .env.example
 ├── requirement.txt
 └── README.md
