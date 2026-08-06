@@ -1,5 +1,7 @@
 # Clinical Retrieval Assistant
 
+## Live Demo - https://clinical-retrieval-botgit.streamlit.app/
+
 A Retrieval-Augmented Generation (RAG) based healthcare chatbot that enables users to query medical PDF documents using natural language.
 
 The system retrieves relevant information from indexed medical documents and generates context-grounded responses using **Groq's Llama 3.1 8B Instant** model.
