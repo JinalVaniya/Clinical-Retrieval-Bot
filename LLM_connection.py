@@ -61,22 +61,3 @@ rag_chain = RetrievalQA.from_chain_type(llm=llm,
                                         chain_type_kwargs = {'prompt': get_prompt()}
                                         )
 
-# Run chain with a Query
-user_query = input("Write your prompt: ")
-response = rag_chain.invoke({'query': user_query})
-print("\n================ ANSWER ================\n")
-print(response["result"])
-print("\n================ SOURCES ================\n")
-
-for i, doc in enumerate(response["source_documents"], start=1):
-
-    source = doc.metadata.get("source", "Unknown Source")
-    page = doc.metadata.get("page", "N/A")
-
-    print(f"\nSource {i}")
-    print(f"File : {source}")
-    print(f"Page : {page}")
-
-    print("\nExcerpt:")
-    print(doc.page_content[:300])
-    print("-" * 60)
